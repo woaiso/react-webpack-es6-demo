@@ -1,0 +1,7 @@
+.header{
+  height:48px;
+  background:#009AD9;
+}
+.header nav{
+  flex:1;
+}
