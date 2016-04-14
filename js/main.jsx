@@ -1,10 +1,10 @@
 /*jshint esversion:6*/
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import Header from './component/header/header.jsx';
 class Main extends React.Component{
   render(){
-    return <div className="foo" ><h1>哈哈哈哈</h1></div>;
+    return <div><Header /><div className="foo" ><h1>This Is React WebPack ES6 JSX Demo</h1></div></div>;
   }
 }
-ReactDOM.render(<Main/>, document.getElementById('main_container'));
+ReactDOM.render(<Main/>, document.getElementById('j_main_container'));

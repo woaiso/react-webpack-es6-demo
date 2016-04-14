@@ -8,7 +8,7 @@ let webpack=require('webpack');
 module.exports={
   entry:'./js/main.jsx',
   output:{
-    path:__dirname,
+    path:'/dist/',
     filename:'bundle.js'
   },
   module:{
