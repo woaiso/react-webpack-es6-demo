@@ -1,4 +1,4 @@
-# jumei tool
+# react-webpack-es6-demo
 
 前端初始化项目，使用了webpack、babel、postcss
 
