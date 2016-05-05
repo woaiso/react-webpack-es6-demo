@@ -1,12 +1,12 @@
 
 import React, {Component} from 'react';
-require("./header.css");
+var headerCss=require("./header.css");
 
 //定义导航菜单数据
 const navItems = [
     {
         _id: 'nav_1',
-        text: '页面装修'
+        text: '页面装修2'
     }, {
         _id: 'nav_2',
         text: '模版管理'
@@ -14,7 +14,7 @@ const navItems = [
         _id: 'nav_3',
         text: "系列管理"
     }
-]
+];
 //定义装修店铺操作
 const navActions = [
     {
@@ -104,7 +104,7 @@ export default class Header extends Component {
     }
     render() {
         return (
-            <nav className="navbar navbar-default">
+            <nav className={headerCss.header+" navbar navbar-default"}>
                 <div className="container-fluid">
                     <div className="navbar-header">
                         <a className="navbar-brand" href="#">旗舰店装修</a>
