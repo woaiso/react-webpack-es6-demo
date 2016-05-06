@@ -3,23 +3,30 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './component/header/header.jsx';
 import App from './component/todo/App';
-import todoApp from './reducers';
+import JMStore from './component/jmstore';
+
+
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import Form from './component/form';
 
+import configureStore from './store/configureStore';
+import ReduxDevTool from './containers/ReduxDevTool';
 
-let store = createStore(todoApp);
+// import 'antd/lib/index.css';  // or 'antd/style/index.less'
 
-class Main extends React.Component{
-  render(){
-  	console.log('yes');
-    return (<div><Header />
-    	<Provider store={store}>
-    		<App />
-    	</Provider>
-    	<Form />
-    	</div>);
-  }
+const store = configureStore();
+
+class Main extends React.Component {
+    render() {
+        return (<div>
+                  <Provider store={ store }>
+                    <div>
+                      <JMStore />
+                      <ReduxDevTool />
+                    </div>
+                  </Provider>
+                </div>);
+    }
 }
 ReactDOM.render(<Main/>, document.getElementById('j_main_container'));
