@@ -38,6 +38,7 @@
     "html-webpack-plugin": "^2.16.1",
     "jsx-loader": "^0.13.2",
     "less-loader": "^2.2.3",
+    "react-css-modules": "^3.7.6",
     "redux-devtools": "^3.2.0",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.0.11",

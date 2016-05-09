@@ -13,7 +13,7 @@ import Form from './component/form';
 import configureStore from './store/configureStore';
 import ReduxDevTool from './containers/ReduxDevTool';
 
-// import 'antd/lib/index.css';  // or 'antd/style/index.less'
+import 'antd/lib/index.css';  // or 'antd/style/index.less'
 
 const store = configureStore();
 

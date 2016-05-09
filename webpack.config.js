@@ -118,6 +118,12 @@ config.module = {
                 presets: ['react', 'es2015'],
                 plugins: ["transform-class-properties"]
             }
+        },
+        {test: /\.(png|jpg|svg|woff|woff2)?(\?v=\d+.\d+.\d+)?$/, loader: 'url-loader?limit=8192'},
+        {test: /\.(eot|ttf)$/, loader: 'file-loader'}, 
+        {
+            test: /\.less$/,
+            loader: "style!css!less"
         }
     ]
 };
@@ -125,12 +131,24 @@ config.module = {
 if (isProduction) {
     config.module.loaders.push({
         test: /\.css$/,
+        include: path.resolve(__dirname, PATHS.node_modules),
+        loader: 'style!css?sourceMap=true'
+    });
+    config.module.loaders.push({
+        test: /\.css$/,
+        exclude: path.resolve(__dirname, PATHS.node_modules),
         loader: ExtractTextPlugin.extract('style-loader', cssLoaders.join('!'))
     });
 
 } else {
     config.module.loaders.push({
         test: /\.css$/,
+        include: path.resolve(__dirname, PATHS.node_modules),
+        loader: 'style!css?sourceMap=true'
+    });
+    config.module.loaders.push({
+        test: /\.css$/,
+        exclude: path.resolve(__dirname, PATHS.node_modules),
         loader: cssLoaders.join('!')
     });
 }
