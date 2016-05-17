@@ -13,16 +13,18 @@
   },
   "licenses": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --colors --progress --profile",
+    "start": "webpack-dev-server --colors --progress --profile --display-reasons --inline",
     "build": "webpack --progress --colors --profile --json > stats.json",
     "lint": "eslint src"
   },
   "dependencies": {
-    "antd": "^0.12.17",
+    "antd": "^1.0.1",
+    "html-webpack-plugin": "^2.17.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-redux": "^4.4.5",
-    "redux": "^3.5.2"
+    "redux": "^3.5.2",
+    "redux-devtools": "^3.3.1"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
@@ -43,7 +45,7 @@
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.0.11",
     "style-loader": "^0.13.1",
-    "webpack": "^1.12.14",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "*",
+    "webpack-dev-server": "*"
   }
 }

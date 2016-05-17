@@ -96,9 +96,11 @@ config.entry = {
     app: PATHS.app
 };
 config.resolve = {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx','css','scss','less'],
     alias: {
-        app: PATHS.app
+        'app': PATHS.app,
+        'antd':path.join(PATHS.node_modules,'antd/dist/antd.min.js'),
+        'antd-style':path.join(PATHS.node_modules,'antd/dist/antd.min.css'),
     }
 };
 //设置输出
