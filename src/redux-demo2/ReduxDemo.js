@@ -1,13 +1,30 @@
 import React, { Component } from 'react';
-import Store, { dispatch, subscribe, getStore } from './Store';
-import { connect } from 'react-redux';
+import { createStore } from 'redux';
+
+function chat(messages = [], action) {
+    switch (action.type) {
+    case 'ADD_MESSAGE':
+        const message = {
+            content: action.message,
+            device: 'iphone6s plus',
+            type: 'text',
+            time: new Date()
+        };
+        return [...messages, message];
+    default:
+        return messages;
+    }
+}
+let store = createStore(chat);
+
+/*********Redux end*********/
 
 
 const Message = ({msg}) => (
 <div>
-  <span>{ msg.content }</span>
+  <span style={{fontSize:14,color:'#333'}}>{ msg.content }</span>
   <span>{ msg.device }</span>
-  <span>{ msg.date }</span>
+  <span>{ msg.time.toString() }</span>
 </div>
 );
 
@@ -15,9 +32,15 @@ const Message = ({msg}) => (
 class MessageList extends Component {
     constructor(props) {
         super(props);
+        var $$this=this;
         this.state = {
             messages: []
         };
+        store.subscribe(function() {
+            $$this.setState({
+                messages: store.getState()
+              });
+        });
     }
     render() {
         return (<div>
@@ -28,7 +51,7 @@ class MessageList extends Component {
     }
 }
 
-export default class ReduxDemo extends Component {
+export default class ReduxDemo2 extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -46,7 +69,7 @@ export default class ReduxDemo extends Component {
      * @return {[type]} [description]
      */
     sendMsg() {
-        this.props.dispatch({
+        store.dispatch({
             type: "ADD_MESSAGE",
             message: this.state.message
         });
@@ -57,13 +80,14 @@ export default class ReduxDemo extends Component {
     render() {
         return (
             <div>
-              <h1>ReduxDemo</h1>
+              <h2>Redux Demo 1 Use Pure Redux </h2>
+              {/**展示对话列表**/}
               <MessageList messages={ this.state.messages } />
+              {/** 输入框**/}
               <input type="text" value={ this.state.message } onChange={ this.handleChange.bind(this) } />
+              {/**发送按钮**/}
               <button onClick={ this.sendMsg.bind(this) }>send</button>
             </div>
             );
     }
 }
-ReduxDemo = connect()(ReduxDemo);
-export default ReduxDemo;

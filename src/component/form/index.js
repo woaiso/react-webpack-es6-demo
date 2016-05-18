@@ -43,7 +43,7 @@ export default class Form extends Component{
 		return <div>
 			<input type="text" value={this.state.value} onChange={this.handChange} />
 			<select multiple={true} defaultValue={["A","C"]}>
-				<option value="A">option A</option>
+				<option value="A">option A</option >
 				<option value="B">option B</option>
 				<option value="C">option C</option>
 				<option value="D">option D</option>

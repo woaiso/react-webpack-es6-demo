@@ -5,3 +5,4 @@ bundle.js.map
 stats.json
 /test
 /build
+.vscode/launch.json
