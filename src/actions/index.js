@@ -1,4 +1,4 @@
-/*jshint esversion:6*/
+
 let nextTodoId=0;
 export const addTodo=(text) =>{
 	return {

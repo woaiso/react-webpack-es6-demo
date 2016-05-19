@@ -14,7 +14,6 @@ const todo=(state,action) =>{
 		}else{
 			return Object.assign({},state,{completed:!state.completed});
 		}
-		break;
 		default:
 		return state;
 	}

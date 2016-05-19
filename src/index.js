@@ -15,12 +15,14 @@ import ReduxDevTool from './containers/ReduxDevTool';
 
 import 'antd-style';  // import style
 import ReduxDemo1 from './redux-demo1/ReduxDemo';
+import ReduxDemo2 from './redux-demo2/ReduxDemo';
 const store = configureStore();
 
 class Main extends React.Component {
     render() {
         return (<div>
                   <ReduxDemo1 />
+                  <ReduxDemo2 />
                   <Provider store={ store }>
                     <div>
                       <App />

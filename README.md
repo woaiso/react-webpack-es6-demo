@@ -10,3 +10,6 @@
 ## 使用
 + `npm run start`
 + `npm run build`
+
+##参考文档
+[Redux 中文教程](http://cn.redux.js.org/index.html)
