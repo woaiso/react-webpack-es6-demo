@@ -24,11 +24,11 @@ class Shelf extends Component {
     sta[name]=value;
     this.props.dispatch(saveShelf(sta));
   }
-  handleWebsiteChange(value){
-    this.props.dispatch(saveShelf({web_site:value}))
-  }
-  handleBrandChange(e){
-    this.props.dispatch(saveShelf({brand_id:e.target.value}))
+  handleRangeTimeChange(date, dateString){
+    this.props.dispatch(saveShelf({
+      start_time:dateString[0],
+      end_time:dateString[1]
+    }));
   }
   render() {
     const formItemLayout = {
@@ -48,8 +48,38 @@ class Shelf extends Component {
         },
       ],
     });
-    const plainOptions = ['极速免税店', '母婴', '轻奢', "服装", "鞋包", "美国馆", "澳洲馆", "韩国馆", "日本馆", "食品"];
-    let {platform,web_site,brand_id,type,category} =this.props.state.saveShelf;
+    const plainOptions = [{
+      label:'极速免税店',
+      value:1
+    },{
+      label:'母婴',
+      value:2
+    },{
+      label:'轻奢',
+      value:3
+    },{
+      label:'服装',
+      value:4
+    },{
+      label:'鞋包',
+      value:5
+    },{
+      label:'美国馆',
+      value:6
+    },{
+      label:'澳洲馆',
+      value:7
+    },{
+      label:'韩国馆',
+      value:8
+    },{
+      label:'日本馆',
+      value:9
+    },{
+      label:'食品',
+      value:10
+    }];
+    let {platform,web_site,brand_id,id,type,category,preChannel,preheatting_time,start_time,end_time} =this.props.state.saveShelf;
     return (
       <div>
         <Form horizontal onSubmit={ this.handleSubmit.bind(this) }>
@@ -67,10 +97,10 @@ class Shelf extends Component {
             </Select>
           </FormItem>
           <FormItem {...formItemLayout} label="关联品牌ID：" required>
-            <Input placeholder="请填写品牌ID" value={brand_id} onChange={this.handleChange.bind(this,'brand_id')}/>
+            <Input placeholder="请填写品牌ID" value={brand_id} onChange={e=>this.handleChange('brand_id',e.target.value)}/>
           </FormItem>
           <FormItem {...formItemLayout} label="关联移动专场ID：" required>
-            <Input placeholder="请填写移动专场ID"/>
+            <Input placeholder="请填写移动专场ID" value={id}  onChange={e=>this.handleChange('id',e.target.value)}/>
           </FormItem>
           <FormItem {...formItemLayout} label="专场类型：" required help="此项专场审核通过后不能修改，请慎重选择！">
             <Select {...selectProps} placeholder="请选择" value={type} style={ { width: '100%' } } onChange={this.handleChange.bind(this,'type')}>
@@ -87,13 +117,13 @@ class Shelf extends Component {
             </Select>
           </FormItem>
           <FormItem {...formItemLayout} label="预展示频道：" required>
-            <CheckboxGroup options={plainOptions} defaultValue={['Apple']}/>
+            <CheckboxGroup options={plainOptions} defaultValue={preChannel} onChange={this.handleChange.bind(this,'preChannel')}/>
           </FormItem>
           <FormItem {...formItemLayout} label="预热时间：" required help="没有预热或预热和正式页面分别创建时，此处填写与开始时间相同即可">
-            <DatePicker showTime format="yyyy-MM-dd HH:mm:ss" placeholder="请选择时间"/>
+            <DatePicker showTime format="yyyy-MM-dd HH:mm:ss" placeholder="请选择时间" defaultValue={preheatting_time}/>
           </FormItem>
           <FormItem {...formItemLayout} label="开始~结束时间：" required>
-            <RangePicker showTime format="yyyy/MM/dd HH:mm:ss"/>
+            <RangePicker showTime format="yyyy-MM-dd HH:mm:ss" defaultValue={[start_time,end_time]} onChange={this.handleRangeTimeChange.bind(this)}/>
           </FormItem>
           <FormItem wrapperCol={{ span: 12, offset: 7 }}>
             <Button type="primary" onClick={this.handleSubmit}>确定</Button>

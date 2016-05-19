@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Breadcrumb, Icon, Modal ,Button} from 'antd';
+import { Menu, Breadcrumb, Icon, Modal ,Button,Card} from 'antd';
 import styles from './index.css';
 const SubMenu = Menu.SubMenu;
 import ImageMap from '../image-map';
@@ -79,6 +79,11 @@ export default class JMStore extends Component {
                       </div>
                     </div>
                     <Shelf />
+                    <Card title="页面内容" extra={<a href="#">添加模块</a>} >
+                      <p>卡片的内容</p>
+                      <p>卡片的内容</p>
+                      <p>卡片的内容</p>
+                    </Card>
                   </div>
                 </div>
                 <div className={ styles["ant-layout-footer"] }>
