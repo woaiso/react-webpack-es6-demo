@@ -1,10 +1,14 @@
 import {combineReducers} from 'redux';
 import {ADD_MESSAGE, UNDO_MESSAGE, REDO_MESSAGE, REQUEST_POSTS, RECIVE_POST} from '../actions';
 
+const initialState = {
+  messages: []
+};
+
 /**
  * 定义操作
  */
-function chat(messages = [], action) {
+function chat(messages =initialState.messages, action) {
     switch (action.type) {
         case ADD_MESSAGE:
             const message = {
@@ -37,7 +41,16 @@ function posts(state = {
                 didInvalidate: false,
                 info: action.posts,
                 lastUpdate: action.reciveTime
-            })
+            }); 
+        case RECIVE_POST:
+            console.log(state);
+            return state;
+        case ADD_MESSAGE:
+            debugger;
+            return state;
+        default:
+            console.log(state);
+            return state;
     }
 }
 
@@ -47,14 +60,22 @@ function posts(state = {
  * @param state {ReduxState} 保存对话信息
  * @param action {Object} action 操作
  */
-function postRobot(state = {}, action) {
+function postRobot(messages =initialState.messages, action) {
     switch (action.type) {
         case REQUEST_POSTS:
-            return Object.assign({}, state, {
+            return Object.assign({}, messages, {
                 [action.text]: posts
-            })
+            });
+        case RECIVE_POST:
+            return Object.assign({}, messages, {
+                [action.text]: posts
+            });
+        case ADD_MESSAGE:
+            return Object.assign({}, messages, {
+                [action.text]: posts
+            });
         default:
-            return state;
+            return messages;
     }
 }
 
@@ -63,6 +84,6 @@ function postRobot(state = {}, action) {
 const chatApp = combineReducers({
     chat,
     postRobot
-})
+});
 
 export default chatApp;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { createStore ,applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk'
+import thunkMiddleware from 'redux-thunk';
 import chatApp from './reducers';
 import {addMessage,fetchPost} from './actions';
 
@@ -26,10 +26,10 @@ class MessageList extends Component {
             messages: []
         };
         store.subscribe(function () {
-            console.log(store.getState())
+            console.log(store.getState());
             $$this.setState({
                 messages: store.getState().chat
-            })
+            });
         });
     }
     render() {

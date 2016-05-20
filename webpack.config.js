@@ -96,11 +96,11 @@ config.entry = {
     app: PATHS.app
 };
 config.resolve = {
-    extensions: ['', '.js', '.jsx','css','scss','less'],
+    extensions: ['', '.js', '.jsx', 'css', 'scss', 'less'],
     alias: {
         'app': PATHS.app,
-        'antd':path.join(PATHS.node_modules,'antd/dist/antd.min.js'),
-        'antd-style':path.join(PATHS.node_modules,'antd/dist/antd.min.css'),
+        'antd': path.join(PATHS.node_modules, 'antd/dist/antd.min.js'),
+        'antd-style': path.join(PATHS.node_modules, 'antd/dist/antd.min.css'),
     }
 };
 //设置输出
@@ -121,8 +121,14 @@ config.module = {
                 plugins: ["transform-class-properties"]
             }
         },
-        {test: /\.(png|jpg|svg|woff|woff2)?(\?v=\d+.\d+.\d+)?$/, loader: 'url-loader?limit=8192'},
-        {test: /\.(eot|ttf)$/, loader: 'file-loader'}, 
+        {
+            test: /\.(png|jpg|svg|woff|woff2)?(\?v=\d+.\d+.\d+)?$/,
+            loader: 'url-loader?limit=8192'
+        },
+        {
+            test: /\.(eot|ttf)$/,
+            loader: 'file-loader'
+        },
         {
             test: /\.less$/,
             loader: "style!css!less"

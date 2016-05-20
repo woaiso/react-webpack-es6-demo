@@ -20,7 +20,7 @@ export function addMessage(text){
     return {
         type:ADD_MESSAGE,
         text
-    }
+    };
 }
 /**
  * 撤销发送的消息
@@ -30,7 +30,7 @@ export function undoMessage(index){
     return {
         type:UNDO_MESSAGE,
         index
-    }
+    };
 }
 /**
  * 重发消息
@@ -40,7 +40,7 @@ export function redoMessage(text){
      return {
          type:REDO_MESSAGE,
          text
-     }
+     };
 }
 
 export const REQUEST_POSTS="REQUEST_POSTS";
@@ -48,7 +48,7 @@ function requestPosts(text) {
   return {
     type: REQUEST_POSTS,
     text
-  }
+  };
 }
 export const RECIVE_POST="RECIVE_POST";
 function recivePost(text,json){
@@ -57,7 +57,7 @@ function recivePost(text,json){
         text,
         posts:json,
         reciveTime:Date.now()
-    }
+    };
 }
 
 
@@ -76,6 +76,6 @@ export function fetchPost(text){
               })
           })
           .then(respones=>respones.json())
-          .then(json=>dispatch(recivePost(text,json)))
-      }
+          .then(json=>dispatch(recivePost(text,json)));
+      };
 }
