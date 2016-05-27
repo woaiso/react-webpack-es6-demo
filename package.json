@@ -20,6 +20,7 @@
   "dependencies": {
     "antd": "^1.0.1",
     "html-webpack-plugin": "^2.17.0",
+    "moment": "^2.13.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-redux": "^4.4.5",
